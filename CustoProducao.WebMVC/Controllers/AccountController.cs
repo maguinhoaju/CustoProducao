@@ -14,7 +14,7 @@ using CustoProducao.Models;
 using CustoProducao.Models.AccountViewModels;
 using CustoProducao.Services;
 
-namespace CustoProducao.Controllers
+namespace CustoProducao.WebMVC.Controllers
 {
     [Authorize]
     [Route("[controller]/[action]")]

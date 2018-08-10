@@ -1,0 +1,51 @@
+﻿@model CustoProducao.Core.Insumo
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Insumo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DtInsumoCadastro)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DtInsumoCadastro)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NmInsumo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NmInsumo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DsInsumo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DsInsumo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.VlInsumoNota)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.VlInsumoNota)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.VlInsumoFrete)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.VlInsumoFrete)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdInsumo" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

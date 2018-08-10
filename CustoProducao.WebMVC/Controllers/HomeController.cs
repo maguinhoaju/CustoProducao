@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using CustoProducao.Models;
 
-namespace CustoProducao.Controllers
+namespace CustoProducao.WebMVC.Controllers
 {
     public class HomeController : Controller
     {
