@@ -10,9 +10,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using CustoProducao.Models;
+using CustoProducao.Infrastructure.Identity;
 using CustoProducao.Models.ManageViewModels;
-using CustoProducao.Services;
+using CustoProducao.Core.Interfaces;
+using CustoProducao.WebMVC.Extentions;
+
 
 namespace CustoProducao.WebMVC.Controllers
 {

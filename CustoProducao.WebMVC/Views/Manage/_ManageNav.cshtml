@@ -1,4 +1,5 @@
 ﻿@using CustoProducao.Views.Manage
+@using CustoProducao.Infrastructure.Identity
 @inject SignInManager<ApplicationUser> SignInManager
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();

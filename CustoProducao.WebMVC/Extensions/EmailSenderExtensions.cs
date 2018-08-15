@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
-using CustoProducao.Services;
+using CustoProducao.Core.Interfaces;
 
-namespace CustoProducao.Services
+namespace CustoProducao.WebMVC.Extentions
 {
     public static class EmailSenderExtensions
     {
