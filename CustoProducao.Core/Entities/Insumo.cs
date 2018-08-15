@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CustoProducao.Core
+namespace CustoProducao.Core.Entities
 {
     public partial class Insumo
     {
         public Guid IdInsumo { get; set; }
+        public string CdInsumo { get; set; }
         public DateTime DtInsumoCadastro { get; set; }
         public string NmInsumo { get; set; }
         public string DsInsumo { get; set; }
