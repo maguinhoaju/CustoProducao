@@ -13,6 +13,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.CdInsumo)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.DtInsumoCadastro)
             </th>
             <th>
@@ -27,12 +30,18 @@
             <th>
                 @Html.DisplayNameFor(model => model.VlInsumoFrete)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CdInsumo)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DtInsumoCadastro)
             </td>
@@ -47,6 +56,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.VlInsumoFrete)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdInsumo">Edit</a> |

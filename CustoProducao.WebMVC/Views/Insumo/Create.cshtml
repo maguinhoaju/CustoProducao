@@ -13,6 +13,11 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                <label asp-for="CdInsumo" class="control-label"></label>
+                <input asp-for="CdInsumo" class="form-control" />
+                <span asp-validation-for="CdInsumo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="DtInsumoCadastro" class="control-label"></label>
                 <input asp-for="DtInsumoCadastro" class="form-control" />
                 <span asp-validation-for="DtInsumoCadastro" class="text-danger"></span>
@@ -36,6 +41,11 @@
                 <label asp-for="VlInsumoFrete" class="control-label"></label>
                 <input asp-for="VlInsumoFrete" class="form-control" />
                 <span asp-validation-for="VlInsumoFrete" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
