@@ -54,7 +54,7 @@ namespace CustoProducao.WebMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdInsumo,DtInsumoCadastro,NmInsumo,DsInsumo,VlInsumoNota,VlInsumoFrete")] Insumo insumo)
+        public async Task<IActionResult> Create([Bind("IdInsumo,CdInsumo,DtInsumoCadastro,NmInsumo,DsInsumo,VlInsumoNota,VlInsumoFrete,Id")] Insumo insumo)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +87,7 @@ namespace CustoProducao.WebMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("IdInsumo,DtInsumoCadastro,NmInsumo,DsInsumo,VlInsumoNota,VlInsumoFrete")] Insumo insumo)
+        public async Task<IActionResult> Edit(Guid id, [Bind("IdInsumo,CdInsumo,DtInsumoCadastro,NmInsumo,DsInsumo,VlInsumoNota,VlInsumoFrete,Id")] Insumo insumo)
         {
             if (id != insumo.IdInsumo)
             {
