@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CustoProducao.Core.Entities
 {
-    public partial class Insumo
+    public partial class Insumo : BaseEntity
     {
         public Guid IdInsumo { get; set; }
         public string CdInsumo { get; set; }
