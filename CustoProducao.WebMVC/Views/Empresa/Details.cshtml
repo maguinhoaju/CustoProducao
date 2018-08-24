@@ -1,0 +1,30 @@
+﻿@model CustoProducao.Core.Entities.Empresa
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Empresa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NrCnpj)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NrCnpj)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NmEmpresa)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NmEmpresa)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.IdEmpresa">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

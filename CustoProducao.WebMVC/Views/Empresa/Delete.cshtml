@@ -1,0 +1,33 @@
+﻿@model CustoProducao.Core.Entities.Empresa
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Empresa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NrCnpj)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NrCnpj)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NmEmpresa)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NmEmpresa)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdEmpresa" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

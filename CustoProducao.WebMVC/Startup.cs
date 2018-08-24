@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using CustoProducao.Core.Interfaces;
-using CustoProducao.Infrastructure;
+using CustoProducao.Infrastructure.Data;
 using CustoProducao.Infrastructure.Identity;
 using CustoProducao.Infrastructure.Services;
 using CustoProducao.Infrastructure.Logging;

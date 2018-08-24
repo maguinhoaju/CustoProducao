@@ -8,7 +8,7 @@ namespace CustoProducao.WebMVC.ViewModels
 {
     public class InsumoViewModel
     {
-        public Guid IdInsumo { get; set; }
+        public int IdInsumo { get; set; }
 
         [Required(AllowEmptyStrings =false,ErrorMessage ="Campo obrigatório")]
         [Display(Name = "Código do Insumo")]
