@@ -7,22 +7,33 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CustoProducao.Core.Entities;
 using CustoProducao.Infrastructure.Data;
+using CustoProducao.WebMVC.ViewModels;
+using AutoMapper;
+using CustoProducao.Core.Manager.Contracts;
+using CustoProducao.Core.Translation;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CustoProducao.WebMVC.Controllers
 {
+//    [Authorize]
     public class EmpresaController : Controller
     {
-        private readonly CustoProducaoDbContext _context;
+        private readonly IEmpresaManager _empresaManager;
+        private readonly IMapper _mapper;
+        private readonly IEntityTranslator _translator;
 
-        public EmpresaController(CustoProducaoDbContext context)
+        public EmpresaController(IEmpresaManager empresaManager, IMapper mapper, IEntityTranslator translator)
         {
-            _context = context;
+            _empresaManager = empresaManager;
+            _mapper = mapper;
+            _translator = translator;
         }
 
         // GET: Empresa
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Empresas.ToListAsync());
+            var empresas = await _empresaManager.ListAllAsync();
+            return View(_translator.Translate<List<EmpresaViewModel>>(empresas.ToList()));
         }
 
         // GET: Empresa/Details/5
@@ -33,8 +44,7 @@ namespace CustoProducao.WebMVC.Controllers
                 return NotFound();
             }
 
-            var empresa = await _context.Empresas
-                .FirstOrDefaultAsync(m => m.IdEmpresa == id);
+            var empresa = await _empresaManager.GetByIdAsync((int)id);
             if (empresa == null)
             {
                 return NotFound();
@@ -54,12 +64,12 @@ namespace CustoProducao.WebMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdEmpresa,NrCnpj,NmEmpresa")] Empresa empresa)
+        public async Task<IActionResult> Create([Bind("IdEmpresa,NrCnpj,NmEmpresa")] EmpresaViewModel empresa)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(empresa);
-                await _context.SaveChangesAsync();
+                var result = _mapper.Map <Empresa> (empresa);
+                await _empresaManager.AddAsync(result);
                 return RedirectToAction(nameof(Index));
             }
             return View(empresa);
@@ -73,7 +83,7 @@ namespace CustoProducao.WebMVC.Controllers
                 return NotFound();
             }
 
-            var empresa = await _context.Empresas.FindAsync(id);
+            var empresa = await _empresaManager.GetByIdAsync((int)id);
             if (empresa == null)
             {
                 return NotFound();
@@ -86,7 +96,7 @@ namespace CustoProducao.WebMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdEmpresa,NrCnpj,NmEmpresa")] Empresa empresa)
+        public async Task<IActionResult> Edit(int id, [Bind("IdEmpresa,NrCnpj,NmEmpresa")] EmpresaViewModel empresa)
         {
             if (id != empresa.IdEmpresa)
             {
@@ -97,8 +107,9 @@ namespace CustoProducao.WebMVC.Controllers
             {
                 try
                 {
-                    _context.Update(empresa);
-                    await _context.SaveChangesAsync();
+                    var result = _mapper.Map<Empresa>(empresa);
+
+                    await _empresaManager.UpdateAsync(result);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -124,8 +135,7 @@ namespace CustoProducao.WebMVC.Controllers
                 return NotFound();
             }
 
-            var empresa = await _context.Empresas
-                .FirstOrDefaultAsync(m => m.IdEmpresa == id);
+            var empresa = await _empresaManager.GetByIdAsync((int)id);
             if (empresa == null)
             {
                 return NotFound();
@@ -139,15 +149,14 @@ namespace CustoProducao.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var empresa = await _context.Empresas.FindAsync(id);
-            _context.Empresas.Remove(empresa);
-            await _context.SaveChangesAsync();
+            var empresa = await _empresaManager.GetByIdAsync((int)id);
+            await _empresaManager.DeleteAsync(empresa);
             return RedirectToAction(nameof(Index));
         }
 
         private bool EmpresaExists(int id)
         {
-            return _context.Empresas.Any(e => e.IdEmpresa == id);
+            return _empresaManager.GetByIdAsync(id) != null;
         }
     }
 }
